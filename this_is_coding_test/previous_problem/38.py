@@ -34,4 +34,3 @@ for i in range(1, N + 1):
         answer += 1
 
 print(answer)
-

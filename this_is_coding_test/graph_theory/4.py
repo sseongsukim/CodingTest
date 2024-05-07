@@ -37,5 +37,3 @@ while q:
             q.append(next_node)
 
 print(result)
-
-

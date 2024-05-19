@@ -23,18 +23,20 @@
 import sys
 input = sys.stdin.readline
 N = int(input())
-arr = []
+Ts = []
+Ps = []
 for _ in range(N):
-    arr.append(list(map(int, input().split())))
+    t, p = map(int, input().split())
+    Ts.append(t)
+    Ps.append(p)
 
-dp = [0] * (N + 1)
 max_value = 0
-for n in range(N - 1, -1, -1):
-    time = arr[n][0] + n
-    if time <= N:
-        dp[n] = max(arr[n][1] + dp[time], max_value)
-        max_value = dp[n]
+hours = [0] * (N + 1)
+for i in range(N - 1, -1, -1):
+    if i + Ts[i] > N:
+        hours[i] = max_value
     else:
-        dp[n] = max_value
+        hours[i] = max(Ps[i] + hours[Ts[i] + i], max_value)
+        max_value = hours[i]
 
-print(max_value)
+print(hours)

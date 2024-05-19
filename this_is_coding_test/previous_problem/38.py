@@ -9,27 +9,28 @@
 """
 N, M = map(int, input().split())
 INF = int(1e9)
-graph = [[INF] * (N + 1) for _ in range(N + 1)]
-for i in range(1, N + 1):
-    for j in range(1, N + 1):
+arr = [[INF] * (N + 1) for _ in range(N + 1)]
+for i in range(N + 1):
+    for j in range(N + 1):
         if i == j:
-            graph[i][j] = 0
+            arr[i][j] = 0
 
 for _ in range(M):
     a, b = map(int, input().split())
-    graph[a][b] = 1
+    arr[a][b] = 1
 
 for k in range(1, N + 1):
     for i in range(1, N + 1):
         for j in range(1, N + 1):
-            graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j])
+            arr[i][j] = min(arr[i][j], arr[i][k] + arr[k][j])
 
 answer = 0
 for i in range(1, N + 1):
     count = 0
     for j in range(1, N + 1):
-        if graph[i][j] != INF or graph[j][i] != INF:
+        if arr[i][j] != INF or arr[j][i] != INF:
             count += 1
+
     if count == N:
         answer += 1
 

@@ -20,29 +20,19 @@ for _ in range(M):
     arr[a].append((b, 1))
     arr[b].append((a, 1))
 
-
 def dijkstra(start):
-    heap = []
     distance[start] = 0
-    heapq.heappush(heap, (distance[start], start))
-    while heap:
-        dist, now = heapq.heappop(heap)
+    q = []
+    heapq.heappush(q, (distance[start], start))
+    while q:
+        dist, now = heapq.heappop(q)
         if distance[now] < dist:
             continue
         for next_node in arr[now]:
-            cost = next_node[1] + dist
-            if cost < distance[next_node[0]]:
+            cost = dist + next_node[1]
+            if distance[next_node[0]] > cost:
                 distance[next_node[0]] = cost
-                heapq.heappush(heap, (cost, next_node[0]))
+                heapq.heappush(q, (cost, next_node[0]))
 
 dijkstra(1)
-nodes = []
-max_values = -INF
-for i in range(1, N + 1):
-    if max_values < distance[i]:
-        max_values = distance[i]
-        max_value_indices = [i]
-    else:
-        max_value_indices.append(i)
-
-print(min(max_value_indices), max_values, len(max_value_indices))
+print(distance)

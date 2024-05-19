@@ -33,7 +33,8 @@ for i in range(T):
 
     distance = [[INF] * N for _ in range(N)]
     distance[0][0] = arr[0][0]
-    q = [(arr[0][0], 0, 0)]
+    q = []
+    heapq.heappush(q, (distance[0][0], 0, 0))
 
     while q:
         dist, x, y = heapq.heappop(q)
@@ -47,9 +48,6 @@ for i in range(T):
                 cost = dist + arr[nx][ny]
                 if cost < distance[nx][ny]:
                     distance[nx][ny] = cost
-                    heapq.heappush(q, (cost, nx, ny))
+                    heapq.heappush(q, (distance[nx][ny], nx, ny))
 
     print(distance[N-1][N-1])
-
-
-

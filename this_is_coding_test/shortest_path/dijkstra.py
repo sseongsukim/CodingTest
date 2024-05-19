@@ -33,7 +33,6 @@ def dijkstra(start):
     distance[start] = 0
     heapq.heappush(heap, (distance[start], start))
     while heap:
-        # print(heap)
         dist, now = heapq.heappop(heap)
         if distance[now] < dist:
             continue

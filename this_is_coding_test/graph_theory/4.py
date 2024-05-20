@@ -8,32 +8,31 @@
 """
 from collections import deque
 import sys
+import copy
 input = sys.stdin.readline
 N = int(input())
 indegree = [0] * (N + 1)
-cost_list = [0] * (N + 1)
-graph = [[] for _ in range(N + 1)]
+costs = [0] * (N + 1)
+arr = [[] for _ in range(N + 1)]
 for i in range(1, N + 1):
-    number_list = list(map(int, input().split()))
-    cost_list[i] = number_list[0]
-    if len(number_list) > 2:
-        indegree[i] = len(number_list[1:-1])
-        for n in number_list[1: -1]:
-            graph[n].append(i)
+    numbers = list(map(int, input().split()))
+    costs[i] = numbers[0]
+    for n in numbers[1: -1]:
+        indegree[i] += 1
+        arr[n].append(i)
 
 q = deque()
 for i in range(1, N + 1):
     if indegree[i] == 0:
         q.append(i)
 
-result = []
+result = copy.deepcopy(costs)
 while q:
     now = q.popleft()
-    result.append(cost_list[now])
-    for next_node in graph[now]:
+    for next_node in arr[now]:
         indegree[next_node] -= 1
         if indegree[next_node] == 0:
-            cost_list[next_node] += cost_list[now]
+            result[next_node] = max(result[next_node], costs[next_node] + result[now])
             q.append(next_node)
 
-print(result)
+print(result[1:])

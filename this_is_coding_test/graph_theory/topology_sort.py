@@ -12,24 +12,26 @@
 from collections import deque
 N, M = map(int, input().split())
 indegree = [0] * (N + 1)
-graph = [[] for _ in range(N + 1)]
+arr = [[] for _ in range(N + 1)]
 for _ in range(M):
     a, b = map(int, input().split())
-    graph[a].append(b)
     indegree[b] += 1
+    arr[a].append(b)
 
-result = []
 q = deque()
+stack = []
 for i in range(1, N + 1):
     if indegree[i] == 0:
         q.append(i)
+        stack.append(i)
 
 while q:
     now = q.popleft()
-    result.append(now)
-    for next_node in graph[now]:
+    for next_node in arr[now]:
         indegree[next_node] -= 1
         if indegree[next_node] == 0:
             q.append(next_node)
+            stack.append(next_node)
 
-print(result)
+for s in stack:
+    print(s, end= ' ')

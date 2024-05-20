@@ -47,3 +47,7 @@ for d in data:
     if find_parents(parents, x) != find_parents(parents, y):
         union_parents(parents, x, y)
         used_cost += cost
+
+print(total_cost)
+print(used_cost)
+print(total_cost - used_cost)

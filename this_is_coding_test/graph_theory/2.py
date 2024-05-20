@@ -13,7 +13,7 @@ import sys
 input = sys.stdin.readline
 N, M = map(int, input().split())
 parents = [0] * (N + 1)
-for i in range(N + 1):
+for i in range(1, N + 1):
     parents[i] = i
 
 def find_parents(parents, x):
@@ -21,20 +21,25 @@ def find_parents(parents, x):
         parents[x] = find_parents(parents, parents[x])
     return parents[x]
 
-def union_parents(parents, a, b):
-    a = find_parents(parents, a)
-    b = find_parents(parents, b)
-    if a < b:
-        parents[b] = a
+def union_parents(parents, x, y):
+    x = find_parents(parents, x)
+    y = find_parents(parents, y)
+    if x < y:
+        parents[y] = x
     else:
-        parents[a] = b
+        parents[x] = y
 
 for _ in range(M):
     operator, a, b = map(int, input().split())
     if operator == 0:
         union_parents(parents, a, b)
-    elif operator == 1:
+    else:
         if find_parents(parents, a) != find_parents(parents, b):
-            print('NO')
+            print("NO")
         else:
-            print('YES')
+            print("YES")
+
+print(parents)
+
+for i in range(1, N + 1):
+    print(find_parents(parents, i))

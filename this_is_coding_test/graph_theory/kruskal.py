@@ -20,26 +20,26 @@ def find_parents(parents, x):
         parents[x] = find_parents(parents, parents[x])
     return parents[x]
 
-def union_parents(parents, a, b):
-    a = find_parents(parents, a)
-    b = find_parents(parents, b)
-    if a < b:
-        parents[b] = a
+def union_parents(parents, x, y):
+    x = find_parents(parents, x)
+    y = find_parents(parents, y)
+    if x < y:
+        parents[y] = x
     else:
-        parents[a] = b
+        parents[x] = y
 
-edges = []
+data = []
 for _ in range(M):
     a, b, cost = map(int, input().split())
-    edges.append((cost, a, b))
+    data.append((cost, a, b))
 
-edges.sort()
+data.sort()
 
-total_cost = 0
-for edge in edges:
-    cost, a, b = edge
-    if find_parents(parents, a) != find_parents(parents, b):
-        union_parents(parents, a, b)
-        total_cost += cost
+answer = 0
+for d in data:
+    cost, x, y = d
+    if find_parents(parents, x) != find_parents(parents, y):
+        union_parents(parents, x, y)
+        answer += cost
 
-print(total_cost)
+print(answer)

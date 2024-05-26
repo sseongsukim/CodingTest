@@ -9,4 +9,5 @@ for i in range(1, len(numbers)):
         answer += int(numbers[i])
     else:
         answer *= int(numbers[i])
+
 print(answer)

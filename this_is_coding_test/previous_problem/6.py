@@ -8,20 +8,22 @@ def solution(food_times, k):
     for i in range(len(food_times)):
         heapq.heappush(heap, (food_times[i], i + 1))
 
-    count = 0
-    previous = 0
     length = len(food_times)
-    while count + (heap[0][0] - previous) * length <= k:
-        now, index = heapq.heappop(heap)
-        count += (now - previous) * length
-        length -= 1
-        previous = now
+    previous = 0
+    while heap:
+        t = (heap[0][0] - previous) * length
+        if t <= k:
+            k -= t
+            previous, index = heapq.heappop(heap)
+            length -= 1
+        else:
+            index = k % length
+            heap.sort(key= lambda x: x[1])
+            answer = heap[index][1]
+            break
 
-    result = sorted(heap, key= lambda x: x[1])
-    return result[(k - count) % length][1]
-
+    return answer
 
 food_times = [8, 6, 4]
 k = 15
-# answer = 2
 print(solution(food_times, k))

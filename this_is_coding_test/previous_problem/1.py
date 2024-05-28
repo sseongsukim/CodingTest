@@ -3,13 +3,14 @@
 2 3 1 2 2
 """
 N = int(input())
-arr = sorted(list(map(int, input().split())))
+arr = list(map(int, input().split()))
+arr.sort()
 
-group = 0
 count = 0
+group = 0
 for a in arr:
     count += 1
-    if count >= a:
+    if a <= count:
         group += 1
         count = 0
 

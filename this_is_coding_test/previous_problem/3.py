@@ -5,18 +5,20 @@
 """
 S = input()
 first = S[0]
-flip_zero = 0
-flip_one = 0
-if first == '0':
-    flip_zero += 1
+
+zeros = 0
+ones = 0
+
+if int(first) == 0:
+    zeros += 1
 else:
-    flip_one += 1
+    ones += 1
 
 for i in range(len(S) - 1):
-    if S[i] != S[i + 1]:
-        if S[i + 1] == '0':
-            flip_zero += 1
+    if S[i + 1] != S[i]:
+        if int(S[i + 1]) == 0:
+            zeros += 1
         else:
-            flip_one += 1
+            ones += 1
 
-print(flip_zero, flip_one)
+print(min(zeros, ones))

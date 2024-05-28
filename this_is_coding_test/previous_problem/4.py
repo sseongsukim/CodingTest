@@ -3,11 +3,13 @@
 3 2 1 1 9
 """
 N = int(input())
-arr = sorted(list(map(int, input().split())))
+numbers = list(map(int, input().split()))
+numbers.sort()
+
 target = 1
-for a in arr:
-    if target < a:
+for n in numbers:
+    if target < n:
         break
-    target += a
+    target += n
 
 print(target)

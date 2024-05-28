@@ -4,10 +4,12 @@
 """
 numbers = input()
 answer = int(numbers[0])
-for i in range(1, len(numbers)):
-    if answer <= 1 or numbers[i] == "0":
-        answer += int(numbers[i])
+
+for n in numbers[1:]:
+
+    if n == "0" or answer <= 0:
+        answer += int(n)
     else:
-        answer *= int(numbers[i])
+        answer *= int(n)
 
 print(answer)

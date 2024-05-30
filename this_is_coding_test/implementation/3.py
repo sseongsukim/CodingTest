@@ -13,6 +13,13 @@
 1 0 0
 1 1 0
 -> 3
+
+5 5
+1 1 0
+1 1 0 0 1
+0 0 0 1 1
+1 1 0 0 1
+0 0 0 0 0
 """
 N, M = map(int, input().split())
 x, y, D = map(int, input().split())

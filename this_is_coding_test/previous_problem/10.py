@@ -28,8 +28,8 @@ def solution(key, lock):
     for _ in range(4):
         key = turn(key)
 
-        for x in range(length * 2):
-            for y in range(length * 2):
+        for x in range(1, length * 2):
+            for y in range(1, length * 2):
                 newlock = copy.deepcopy(new_lock)
                 for i in range(length):
                     for j in range(length):

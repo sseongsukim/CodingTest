@@ -29,13 +29,13 @@ for _ in range(N):
     Ts.append(t)
     Ps.append(p)
 
-values = [0] * (N + 1)
+dp = [0] * N
 max_value = 0
 for i in range(N - 1, -1, -1):
     if i + Ts[i] > N:
-        values[i] = max_value
+        dp[i] = max_value
     else:
-        max_value = max(max_value, values[Ts[i] + i] + Ps[i])
-        values[i] = max_value
+        max_value = max(max_value, dp[Ts[i] + i] + Ps[i])
+        dp[i] = max_value
 
-print(values)
+print(dp)

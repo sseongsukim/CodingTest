@@ -3,14 +3,12 @@ import heapq
 def solution(food_times, k):
     if sum(food_times) <= k:
         return -1
-
     heap = []
     for i in range(len(food_times)):
         heapq.heappush(heap, (food_times[i], i + 1))
 
-    length = len(food_times)
     previous_time = 0
-
+    length = len(food_times)
     while heap:
         t = (heap[0][0] - previous_time) * length
         if t <= k:

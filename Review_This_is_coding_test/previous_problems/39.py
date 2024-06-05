@@ -23,22 +23,22 @@ import heapq
 import sys
 input = sys.stdin.readline
 INF = int(1e9)
-TC = int(input())
 direction = [[0, 1], [-1, 0], [0, -1], [1, 0]]
+TC = int(input())
 for _ in range(TC):
     N = int(input())
     MAP = []
-    for _ in range(N):
+    for i in range(N):
         MAP.append(list(map(int, input().split())))
 
+    distance = [[INF] * (N + 1) for _ in range(N + 1)]
     x, y = 0, 0
-    distance = [[INF] * N for _ in range(N)]
     distance[x][y] = MAP[x][y]
     heap = []
     heapq.heappush(heap, (distance[x][y], x, y))
     while heap:
         dist, x, y = heapq.heappop(heap)
-        if dist > distance[x][y]:
+        if dist < distance[x][y]:
             continue
 
         for d in range(4):
@@ -51,5 +51,3 @@ for _ in range(TC):
                     heapq.heappush(heap, (distance[nx][ny], nx, ny))
 
     print(distance[N - 1][N - 1])
-
-

@@ -9,7 +9,6 @@
 """
 import sys
 input = sys.stdin.readline
-
 N, M = map(int, input().split())
 parents = [0] * (N + 1)
 for i in range(1, N + 1):
@@ -33,7 +32,7 @@ for i in range(N):
     MAP.append(list(map(int, input().split())))
     for j in range(N):
         if MAP[i][j] == 1:
-            union_parents(parents, i + 1, j + 1)
+            union_parents(parents, i, j)
 
 tour_list = list(map(int, input().split()))
 check = True
@@ -42,4 +41,7 @@ for i in range(len(tour_list) - 1):
         check = False
         break
 
-print("YES") if check else print("NO")
+if check:
+    print("YES")
+else:
+    print("NO")

@@ -20,7 +20,6 @@ input = sys.stdin.readline
 
 G = int(input())
 P = int(input())
-
 parents = [0] * (G + 1)
 for i in range(1, G + 1):
     parents[i] = i

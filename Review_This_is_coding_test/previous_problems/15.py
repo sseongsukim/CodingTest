@@ -20,23 +20,21 @@
 -> 2 3
 """
 from collections import deque
-N, M, K, X = map(int, input().split())
-arr = [[] for _ in range(N + 1)]
+N, M, K, start = map(int, input().split())
+graph = [[] for _ in range(N + 1)]
 for _ in range(M):
     a, b = map(int, input().split())
-    arr[a].append(b)
+    graph[a].append(b)
 
-INF = int(1e9)
-distance = [INF] * (N + 1)
+distance = [0] * (N + 1)
 visited = [False] * (N + 1)
-distance[X] = 0
-visited[X] = True
+distance[start] = 0
+visited[start] = True
 q = deque()
-q.append(X)
-
+q.append(start)
 while q:
     now = q.popleft()
-    for next_node in arr[now]:
+    for next_node in graph[now]:
         if not visited[next_node]:
             distance[next_node] = distance[now] + 1
             visited[next_node] = True
@@ -44,8 +42,7 @@ while q:
 
 if K not in distance[1:]:
     print(-1)
-
-for i in range(len(distance)):
-    if distance[i] == K:
-        print(i)
-
+else:
+    for i in range(1, N + 1):
+        if distance[i] == K:
+            print(i)

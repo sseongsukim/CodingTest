@@ -1,7 +1,6 @@
 """
 Note that how to use stack
 """
-
 def solution(s):
     stack = []
     for i in range(len(s)):

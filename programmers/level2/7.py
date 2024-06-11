@@ -10,7 +10,6 @@ def solution(n):
         answer += 1
         binary_scale_answer = bin(answer).split('b')[1]
         answer_one_count = binary_scale_answer.count("1")
-
         if answer_one_count == one_count:
             break
     return answer

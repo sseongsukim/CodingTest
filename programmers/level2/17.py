@@ -10,11 +10,10 @@ def solution(elements):
     max_length = len(elements)
     new_elements = elements + elements
     for i, e in enumerate(new_elements):
-        sums = e
-        answer.append(sums)
+        answer.append(e)
         for b in new_elements[i + 1: i + max_length]:
-            sums += b
-            answer.append(sums)
+            e += b
+            answer.append(e)
 
     print(answer)
     print(set(answer))

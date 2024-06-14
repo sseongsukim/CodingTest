@@ -11,9 +11,10 @@ def solution(arr):
                 count += 1
             else:
                 break
-        if len(arr) == count:
+        if count == len(arr):
             break
-        max_value += 1
+        else:
+            max_value += 1
     return max_value
 
 

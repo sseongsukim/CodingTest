@@ -2,8 +2,6 @@
 
 
 """
-
-
 def solution(n, a, b):
     answer = 1
     while n > 1:

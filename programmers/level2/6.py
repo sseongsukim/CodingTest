@@ -1,8 +1,11 @@
 """
+숫자의 표현
 Note that
 Conditioning in while loop is much faster than break using if function !
 """
 def solution(n):
+    if n == 1:
+        return 1
     answer = 0
     start = 1
     while start != n:
@@ -14,8 +17,7 @@ def solution(n):
             if value > n:
                 break
         start += 1
-    answer += 1
-    return answer
+    return answer + 1
 
 
 print(solution(15)) # 4

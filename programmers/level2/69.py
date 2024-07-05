@@ -36,7 +36,6 @@ def solution(m, musicinfos):
             else:
                 times = total_time // song_time + 1
             song_info = code * times
-            song_info = song_info[:total_time]
 
         if m in song_info:
             answer.append((total_time, i, title))

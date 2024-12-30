@@ -19,6 +19,7 @@ def solution(s):
                 count = 1
 
         compressed += str(count) + prev if count > 1 else prev
+        print(compressed)
         answer = min(answer, len(compressed))
     return answer
 
@@ -27,8 +28,8 @@ def solution(s):
 
 
 print(solution("aabbaccc")) # 7
-print(solution("ababcdcdababcdcd")) # 9
-print(solution("abcabcdede")) # 8
-print(solution("abcabcabcabcdedededede")) # 14
-print(solution("xababcdcdababcdcd")) # 17
+# print(solution("ababcdcdababcdcd")) # 9
+# print(solution("abcabcdede")) # 8
+# print(solution("abcabcabcabcdedededede")) # 14
+# print(solution("xababcdcdababcdcd")) # 17
 

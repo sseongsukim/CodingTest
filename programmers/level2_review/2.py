@@ -6,6 +6,7 @@ def solution(s):
         return False
     stack = []
     count = 0
+
     # (())
     for element in s:
         if element == "(":
@@ -28,3 +29,4 @@ print(solution("()()")) # True
 print(solution("(())()")) # True
 print(solution(")()(")) # False
 print(solution("(()(")) # False
+
